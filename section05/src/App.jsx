@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Main from "./components/main";
 import Bulb from "./components/Bulb";
 import Counter from "./components/Counter";
+import Register from "./components/Register";
 
 // 부모 컴포넌트(루트 컴포넌트)
 // 모든 자식 컴포넌트를 포함하는 최상위 컴포넌트입니다.
@@ -67,8 +68,10 @@ function App() {
         </button>
       </div> */}
 
-      <Counter />
-      <Bulb />
+      {/* <Counter />
+      <Bulb /> */}
+
+      <Register />
     </>
   );
 }
