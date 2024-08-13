@@ -4,6 +4,8 @@ import Button from "./components/Button";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Main from "./components/main";
+import Bulb from "./components/Bulb";
+import Counter from "./components/Counter";
 
 // 부모 컴포넌트(루트 컴포넌트)
 // 모든 자식 컴포넌트를 포함하는 최상위 컴포넌트입니다.
@@ -20,10 +22,10 @@ function App() {
   // let light = "OFF"; // 일반 변수 사용 예시 (사용하지 않음)
 
   // count 상태 변수와 setCount 상태 업데이트 함수를 선언
-  const [count, setCount] = useState(0); // count의 초기값을 0으로 설정
+  // const [count, setCount] = useState(0); // count의 초기값을 0으로 설정
 
   // light 상태 변수와 setLight 상태 업데이트 함수를 선언
-  const [light, setLight] = useState("OFF"); // light의 초기값을 "OFF"로 설정
+  // const [light, setLight] = useState("OFF"); // light의 초기값을 "OFF"로 설정
 
   return (
     <>
@@ -42,7 +44,7 @@ function App() {
         <div>자식 요소</div>
       </Button> */}
 
-      <div>
+      {/* <div>
         <h1>{count}</h1>
         <button
           onClick={() => {
@@ -51,10 +53,11 @@ function App() {
         >
           +
         </button>
-      </div>
+      </div> */}
 
-      <div>
+      {/* <div>
         <h1>{light}</h1>
+        <Bulb light={light} />
         <button
           onClick={() => {
             setLight(light === "ON" ? "OFF" : "ON");
@@ -62,7 +65,10 @@ function App() {
         >
           {light === "ON" ? "끄기" : "켜기"}
         </button>
-      </div>
+      </div> */}
+
+      <Counter />
+      <Bulb />
     </>
   );
 }
