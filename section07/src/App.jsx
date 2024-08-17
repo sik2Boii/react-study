@@ -49,11 +49,16 @@ function App() {
     );
   };
 
+  const onDelete = (targetId) => {
+    // 대상 항목을 제외한 나머지 항목들로 상태를 업데이트
+    setTodos(todos.filter((todo) => todo.id !== targetId));
+  };
+
   return (
     <div className="App">
       <Header />
       <Editor onCreate={onCreate} />
-      <List todos={todos} onUpdate={onUpdate} />
+      <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
     </div>
   );
 }
