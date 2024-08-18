@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useRef } from "react";
+import { createContext, useCallback, useReducer, useRef } from "react";
 import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
@@ -43,6 +43,14 @@ function reducer(state, action) {
   }
 }
 
+// Context
+// App -> List -> ToDoItem: props drilling이 발생합니다.
+// 이는 여러 단계의 자식 컴포넌트에 걸쳐 동일한 props를 전달해야 할 때 문제가 됩니다.
+// 하나의 데이터를 변경하려면 그 데이터를 전달하는 모든 자식 컴포넌트들을 수정해야 하기 때문에 관리가 어려워집니다.
+// Context는 데이터를 중앙에서 관리하여 하위 컴포넌트들이 직접 접근할 수 있게 함으로써 props drilling 문제를 해결합니다.
+// 컴포넌트가 리렌더링될 때마다 Context를 생성할 필요가 없기 때문에, Context는 컴포넌트 외부에 선언하는 것이 일반적입니다.
+export const TodoContext = createContext();
+
 function App() {
   const [todos, dispatch] = useReducer(reducer, mockData);
   const idRef = useRef(3);
@@ -83,8 +91,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Editor onCreate={onCreate} />
-      <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
+      {/* Context Provider를 통해 todos 상태와 관련된 함수를 하위 컴포넌트에 전달 */}
+      <TodoContext.Provider value={{ todos, onCreate, onUpdate, onDelete }}>
+        <Editor />
+        <List />
+      </TodoContext.Provider>
     </div>
   );
 }
