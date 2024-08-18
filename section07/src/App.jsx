@@ -3,6 +3,8 @@ import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
 import List from "./components/List";
+import Exam from "./components/ReducerExam";
+import ReducerExam from "./components/ReducerExam";
 
 // 임시 데이터
 // 컴포넌트 함수 밖에 선언하여 리렌더링 시 불필요한 재초기화를 방지합니다.
@@ -56,9 +58,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <ReducerExam />
+      {/* <Header />
       <Editor onCreate={onCreate} />
-      <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
+      <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} /> */}
     </div>
   );
 }
